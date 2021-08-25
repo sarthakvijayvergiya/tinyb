@@ -80,17 +80,16 @@ public class HelloTinyB {
         if (characteristics == null)
             return null;
 
-        for (BluetoothGattCharacteristic characteristic : characteristics) {
-            System.out.println("Characteristic: " + characteristic.getUUID());
-//             if (characteristic.getUUID().equals(UUID)){
-                List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
-                for (BluetoothGattDescriptor descriptor : descriptors) {
-                    System.out.println("Descriptior: " + descriptor.getUUID());
-                }
-            }
-//                 return characteristic;
-        
+            for (BluetoothGattCharacteristic characteristic : characteristics) {
+      System.out.println("Characteristic: " + characteristic.getUUID());
+      if (characteristic.getUUID().equals(UUID)) {
+        List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
+        for (BluetoothGattDescriptor descriptor : descriptors) {
+          System.out.println("Descriptor: " + descriptor.getUUID());
         }
+//        return characteristic;
+      }
+    }
         return null;
     }
 
