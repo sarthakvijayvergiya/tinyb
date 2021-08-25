@@ -160,12 +160,12 @@ public class HelloTinyB {
 
         BluetoothGattService tempService = getService(sensor, args[0]);
 
-//         if (tempService == null) {
-//             System.err.println("This device does not have the temperature service we are looking for.");
-//             sensor.disconnect();
-//             System.exit(-1);
-//         }
-//         System.out.println("Found service " + tempService.getUUID());
+        if (tempService == null) {
+            System.err.println("This device does not have the temperature service we are looking for.");
+            sensor.disconnect();
+            System.exit(-1);
+        }
+        System.out.println("Found service " + tempService.getUUID());
 
 //         BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, "f000aa01-0451-4000-b000-000000000000");
 //         BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
