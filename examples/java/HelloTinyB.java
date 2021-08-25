@@ -212,13 +212,13 @@ public class HelloTinyB {
 //             System.out.println(
 //                     String.format(" Temp: Object = %fC, Ambient = %fC", objectTempCelsius, ambientTempCelsius));
 
-            lock.lock();
-            try {
-                cv.await(1, TimeUnit.SECONDS);
-            } finally {
-                lock.unlock();
-            }
-        }
+//             lock.lock();
+//             try {
+//                 cv.await(1, TimeUnit.SECONDS);
+//             } finally {
+//                 lock.unlock();
+//             }
+//         }
         sensor.disconnect();
 
     }
