@@ -158,59 +158,59 @@ public class HelloTinyB {
         });
 
 
-        BluetoothGattService tempService = getService(sensor, "f000aa00-0451-4000-b000-000000000000");
+        BluetoothGattService tempService = getService(sensor, args[0]);
 
-        if (tempService == null) {
-            System.err.println("This device does not have the temperature service we are looking for.");
-            sensor.disconnect();
-            System.exit(-1);
-        }
-        System.out.println("Found service " + tempService.getUUID());
+//         if (tempService == null) {
+//             System.err.println("This device does not have the temperature service we are looking for.");
+//             sensor.disconnect();
+//             System.exit(-1);
+//         }
+//         System.out.println("Found service " + tempService.getUUID());
 
-        BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, "f000aa01-0451-4000-b000-000000000000");
-        BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
-        BluetoothGattCharacteristic tempPeriod = getCharacteristic(tempService, "f000aa03-0451-4000-b000-000000000000");
+//         BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, "f000aa01-0451-4000-b000-000000000000");
+//         BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
+//         BluetoothGattCharacteristic tempPeriod = getCharacteristic(tempService, "f000aa03-0451-4000-b000-000000000000");
 
-        if (tempValue == null || tempConfig == null || tempPeriod == null) {
-            System.err.println("Could not find the correct characteristics.");
-            sensor.disconnect();
-            System.exit(-1);
-        }
+//         if (tempValue == null || tempConfig == null || tempPeriod == null) {
+//             System.err.println("Could not find the correct characteristics.");
+//             sensor.disconnect();
+//             System.exit(-1);
+//         }
 
-        System.out.println("Found the temperature characteristics");
+//         System.out.println("Found the temperature characteristics");
 
         /*
          * Turn on the Temperature Service by writing 1 in the configuration characteristic, as mentioned in the PDF
          * mentioned above. We could also modify the update interval, by writing in the period characteristic, but the
          * default 1s is good enough for our purposes.
          */
-        byte[] config = { 0x01 };
-        tempConfig.writeValue(config);
+//         byte[] config = { 0x01 };
+//         tempConfig.writeValue(config);
 
-        /*
-         * Each second read the value characteristic and display it in a human readable format.
-         */
-        while (running) {
-            byte[] tempRaw = tempValue.readValue();
-            System.out.print("Temp raw = {");
-            for (byte b : tempRaw) {
-                System.out.print(String.format("%02x,", b));
-            }
-            System.out.print("}");
+//         /*
+//          * Each second read the value characteristic and display it in a human readable format.
+//          */
+//         while (running) {
+//             byte[] tempRaw = tempValue.readValue();
+//             System.out.print("Temp raw = {");
+//             for (byte b : tempRaw) {
+//                 System.out.print(String.format("%02x,", b));
+//             }
+//             System.out.print("}");
 
-            /*
-             * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
-             * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
-             * according to wiki, but assume result is good enough for our purposes without conversion.
-             */
-            int objectTempRaw = (tempRaw[0] & 0xff) | (tempRaw[1] << 8);
-            int ambientTempRaw = (tempRaw[2] & 0xff) | (tempRaw[3] << 8);
+//             /*
+//              * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
+//              * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
+//              * according to wiki, but assume result is good enough for our purposes without conversion.
+//              */
+//             int objectTempRaw = (tempRaw[0] & 0xff) | (tempRaw[1] << 8);
+//             int ambientTempRaw = (tempRaw[2] & 0xff) | (tempRaw[3] << 8);
 
-            float objectTempCelsius = convertCelsius(objectTempRaw);
-            float ambientTempCelsius = convertCelsius(ambientTempRaw);
+//             float objectTempCelsius = convertCelsius(objectTempRaw);
+//             float ambientTempCelsius = convertCelsius(ambientTempRaw);
 
-            System.out.println(
-                    String.format(" Temp: Object = %fC, Ambient = %fC", objectTempCelsius, ambientTempCelsius));
+//             System.out.println(
+//                     String.format(" Temp: Object = %fC, Ambient = %fC", objectTempCelsius, ambientTempCelsius));
 
             lock.lock();
             try {
