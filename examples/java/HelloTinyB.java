@@ -65,8 +65,10 @@ public class HelloTinyB {
 
             for (BluetoothGattService service : bluetoothServices) {
                 System.out.println("UUID: " + service.getUUID());
-                if (service.getUUID().equals(UUID))
+                if (service.getUUID().equals(UUID)){
                     tempService = service;
+                    System.out.println("Match Success");
+                }
             }
             Thread.sleep(4000);
         } while (bluetoothServices.isEmpty() && running);
