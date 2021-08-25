@@ -55,7 +55,7 @@ public class HelloTinyB {
      * short UUID AA00 which we insert into the TI Base UUID: f000XXXX-0451-4000-b000-000000000000
      */
     static BluetoothGattService getService(BluetoothDevice device, String UUID) throws InterruptedException {
-        System.out.println("Services exposed by device:");
+        System.out.println("Services exposed by device: " + UUID);
         BluetoothGattService tempService = null;
         List<BluetoothGattService> bluetoothServices = null;
         do {
