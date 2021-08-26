@@ -203,19 +203,19 @@ public class HelloTinyB {
 //         /*
 //          * Each second read the value characteristic and display it in a human readable format.
 //          */
-//         while (running) {
-//             byte[] tempRaw = tempValue.readValue();
-//             System.out.print("Temp raw = {");
-//             for (byte b : tempRaw) {
-//                 System.out.print(String.format("%02x,", b));
-//             }
-//             System.out.print("}");
+        while (running) {
+            byte[] tempRaw = tempValue.readValue();
+            System.out.print("Temp raw = {");
+            for (byte b : tempRaw) {
+                System.out.print(String.format("%02x,", b));
+            }
+            System.out.print("}");
 
-//             /*
-//              * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
-//              * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
-//              * according to wiki, but assume result is good enough for our purposes without conversion.
-//              */
+            /*
+             * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
+             * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
+             * according to wiki, but assume result is good enough for our purposes without conversion.
+             */
 //             int objectTempRaw = (tempRaw[0] & 0xff) | (tempRaw[1] << 8);
 //             int ambientTempRaw = (tempRaw[2] & 0xff) | (tempRaw[3] << 8);
 
@@ -225,13 +225,13 @@ public class HelloTinyB {
 //             System.out.println(
 //                     String.format(" Temp: Object = %fC, Ambient = %fC", objectTempCelsius, ambientTempCelsius));
 
-//             lock.lock();
-//             try {
-//                 cv.await(1, TimeUnit.SECONDS);
-//             } finally {
-//                 lock.unlock();
-//             }
-//         }
+            lock.lock();
+            try {
+                cv.await(1, TimeUnit.SECONDS);
+            } finally {
+                lock.unlock();
+            }
+        }
         sensor.disconnect();
 
     }
