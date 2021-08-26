@@ -90,15 +90,15 @@ public class HelloTinyB {
                 for (BluetoothGattDescriptor descriptor : descriptors) {
                     System.out.println("Descriptor: " + descriptor.getUUID());
                 }
-//                 if (characteristic.getUUID().equals(UUID)) {
-//                     System.out.println("Match success: " + UUID);
-//                     System.out.println("Charaterstic: " + UUID);
-//                     List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
-//                     for (BluetoothGattDescriptor descriptor : descriptors) {
-//                         System.out.println("Descriptor: " + descriptor.getUUID());
-//                     }
-// //                     return characteristic;
-//                 }
+                if (characteristic.getUUID().equals(UUID)) {
+                    System.out.println("Match success: " + UUID);
+                    System.out.println("Charaterstic: " + UUID);
+                    List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
+                    for (BluetoothGattDescriptor descriptor : descriptors) {
+                        System.out.println("Descriptor: " + descriptor.getUUID());
+                    }
+                    return characteristic;
+                }
             }
         return null;
     }
@@ -186,6 +186,7 @@ public class HelloTinyB {
         System.out.println("Found service " + tempService.getUUID());
 
         BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, args[1]);
+        System.out.println("Found BluetoothGattCharacteristic " + tempValue.getUUID());
 //         BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
 //         BluetoothGattCharacteristic tempPeriod = getCharacteristic(tempService, "f000aa03-0451-4000-b000-000000000000");
 
