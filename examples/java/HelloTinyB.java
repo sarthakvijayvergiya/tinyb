@@ -182,7 +182,7 @@ public class HelloTinyB {
         }
         System.out.println("Found service " + tempService.getUUID());
 
-        BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, args[1]);
+        BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, args[2]);
 //         BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
 //         BluetoothGattCharacteristic tempPeriod = getCharacteristic(tempService, "f000aa03-0451-4000-b000-000000000000");
 
