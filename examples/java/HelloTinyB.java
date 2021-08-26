@@ -83,7 +83,10 @@ public class HelloTinyB {
 
             for (BluetoothGattCharacteristic characteristic : characteristics) {
                 System.out.println("Characteristic: " + characteristic.getUUID());
+                System.out.println("Service: " + characteristic.getService());
+                System.out.println("Value: " + characteristic.getValue());
                 List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
+                System.out.println("Descriptor Length: " + descriptors.size());
                 for (BluetoothGattDescriptor descriptor : descriptors) {
                     System.out.println("Descriptor: " + descriptor.getUUID());
                 }
