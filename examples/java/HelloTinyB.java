@@ -82,7 +82,7 @@ public class HelloTinyB {
             return null;
 
             for (BluetoothGattCharacteristic characteristic : characteristics) {
-                System.out.println("Characteristic: " + characteristic.getUUID());
+                System.out.println("Characteristic-----: " + characteristic.getUUID());
                 System.out.println("Service: " + characteristic.getService());
                 System.out.println("Value: " + characteristic.getValue());
                 List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
@@ -92,11 +92,6 @@ public class HelloTinyB {
                 }
                 if (characteristic.getUUID().equals(UUID)) {
                     System.out.println("Match success: " + UUID);
-                    System.out.println("Charaterstic: " + UUID);
-                    List<BluetoothGattDescriptor> descriptors = characteristic.getDescriptors();
-                    for (BluetoothGattDescriptor descriptor : descriptors) {
-                        System.out.println("Descriptor: " + descriptor.getUUID());
-                    }
                     return characteristic;
                 }
             }
