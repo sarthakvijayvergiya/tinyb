@@ -205,6 +205,7 @@ public class HelloTinyB {
 //          */
         while (running) {
             byte[] tempRaw = tempValue.readValue();
+            System.out.println("Temp raw----------------"+ tempRaw);
             System.out.print("Temp raw = {");
             for (byte b : tempRaw) {
                 System.out.print(String.format("%02x,", b));
