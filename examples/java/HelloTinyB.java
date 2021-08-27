@@ -2,6 +2,7 @@ import tinyb.*;
 import java.util.*;
 import java.util.concurrent.locks.*;
 import java.util.concurrent.TimeUnit;
+import java.nio.*;
 
 public class HelloTinyB {
     private static final float SCALE_LSB = 0.03125f;
