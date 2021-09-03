@@ -42,6 +42,7 @@ class ValueNotification implements BluetoothNotification<byte[]> {
               short v = bb.getShort();
               System.out.println("Axes-----"+ v);
             }
+            System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             /*
              * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
              * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
