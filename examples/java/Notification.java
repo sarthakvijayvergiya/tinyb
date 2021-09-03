@@ -30,25 +30,30 @@ import java.util.concurrent.locks.*;
 class ValueNotification implements BluetoothNotification<byte[]> {
 
     public void run(byte[] tempRaw) {
-            System.out.print("Temp raw = {");
+            System.out.print("Axes raw = {");
             for (byte b : tempRaw) {
                 System.out.print(String.format("%02x,", b));
             }
             System.out.print("}");
-
+            ByteBuffer bb = ByteBuffer.wrap(tempRaw);
+            bb.order( ByteOrder.LITTLE_ENDIAN);
+            while( bb.hasRemaining()) {
+              short v = bb.getShort();
+              System.out.println("Axes-----"+ v);
+            }
             /*
              * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
              * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
              * according to wiki, but assume result is good enough for our purposes without conversion.
              */
-            int objectTempRaw = (tempRaw[0] & 0xff) | (tempRaw[1] << 8);
-            int ambientTempRaw = (tempRaw[2] & 0xff) | (tempRaw[3] << 8);
+//             int objectTempRaw = (tempRaw[0] & 0xff) | (tempRaw[1] << 8);
+//             int ambientTempRaw = (tempRaw[2] & 0xff) | (tempRaw[3] << 8);
 
-            float objectTempCelsius = Notification.convertCelsius(objectTempRaw);
-            float ambientTempCelsius = Notification.convertCelsius(ambientTempRaw);
+//             float objectTempCelsius = Notification.convertCelsius(objectTempRaw);
+//             float ambientTempCelsius = Notification.convertCelsius(ambientTempRaw);
 
-            System.out.println(
-                    String.format(" Temp: Object = %fC, Ambient = %fC", objectTempCelsius, ambientTempCelsius));
+//             System.out.println(
+//                     String.format(" Temp: Object = %fC, Ambient = %fC", objectTempCelsius, ambientTempCelsius));
 
 
     }
