@@ -31,11 +31,11 @@ import java.nio.*;
 class ValueNotification implements BluetoothNotification<byte[]> {
 
     public void run(byte[] tempRaw) {
-            System.out.print("Axes raw = {");
-            for (byte b : tempRaw) {
-                System.out.print(String.format("%02x,", b));
-            }
-            System.out.print("}");
+//             System.out.print("Axes raw = {");
+//             for (byte b : tempRaw) {
+//                 System.out.print(String.format("%02x,", b));
+//             }
+//             System.out.print("}");
             ByteBuffer bb = ByteBuffer.wrap(tempRaw);
             bb.order( ByteOrder.LITTLE_ENDIAN);
             while( bb.hasRemaining()) {
