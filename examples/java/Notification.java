@@ -158,7 +158,7 @@ public class Notification {
          * http://processors.wiki.ti.com/images/a/a8/BLE_SensorTag_GATT_Server.pdf. The service we are looking for has the
          * short UUID AA00 which we insert into the TI Base UUID: f000XXXX-0451-4000-b000-000000000000
          */
-        BluetoothGattService tempService = sensor.find( "f000aa00-0451-4000-b000-000000000000");
+        BluetoothGattService tempService = sensor.find(args[1]);
 
         if (tempService == null) {
             System.err.println("This device does not have the temperature service we are looking for.");
@@ -167,11 +167,11 @@ public class Notification {
         }
         System.out.println("Found service " + tempService.getUUID());
 
-        BluetoothGattCharacteristic tempValue = tempService.find("f000aa01-0451-4000-b000-000000000000");
-        BluetoothGattCharacteristic tempConfig = tempService.find("f000aa02-0451-4000-b000-000000000000");
-        BluetoothGattCharacteristic tempPeriod = tempService.find("f000aa03-0451-4000-b000-000000000000");
+        BluetoothGattCharacteristic tempValue = tempService.find(args[2]);
+//         BluetoothGattCharacteristic tempConfig = tempService.find("f000aa02-0451-4000-b000-000000000000");
+//         BluetoothGattCharacteristic tempPeriod = tempService.find("f000aa03-0451-4000-b000-000000000000");
 
-        if (tempValue == null || tempConfig == null || tempPeriod == null) {
+        if (tempValue == null) {
             System.err.println("Could not find the correct characteristics.");
             sensor.disconnect();
             System.exit(-1);
@@ -185,10 +185,10 @@ public class Notification {
          * default 1s is good enough for our purposes.
          */
         byte[] config = { 0x01 };
-        tempConfig.writeValue(config);
+        tempValue.writeValue(config);
         
-        byte[] period = { 100 };
-        tempPeriod.writeValue(period);
+//         byte[] period = { 100 };
+//         tempPeriod.writeValue(period);
 
         tempValue.enableValueNotifications(new ValueNotification());
 
