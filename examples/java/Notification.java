@@ -184,8 +184,8 @@ public class Notification {
          * mentioned above. We could also modify the update interval, by writing in the period characteristic, but the
          * default 1s is good enough for our purposes.
          */
-        byte[] config = { 0x01 };
-        tempValue.writeValue(config);
+//         byte[] config = { 0x01 };
+//         tempValue.writeValue(config);
         
 //         byte[] period = { 100 };
 //         tempPeriod.writeValue(period);
