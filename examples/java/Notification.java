@@ -41,6 +41,7 @@ class ValueNotification implements BluetoothNotification<byte[]> {
             while( bb.hasRemaining()) {
               short v = bb.getShort();
               System.out.println("Axes-----"+ v);
+              System.exit(-1);
             }
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             /*
