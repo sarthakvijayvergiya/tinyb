@@ -40,7 +40,9 @@ class ValueNotification implements BluetoothNotification<byte[]> {
             bb.order( ByteOrder.LITTLE_ENDIAN);
             while( bb.hasRemaining()) {
               short v = bb.getShort();
-              System.out.println("Axes.................... "+ v);
+              int value = Short.toUnsignedInt(v);
+              value = value - 32768;
+              System.out.println("Axes.................... "+ value);
               System.exit(-1);
             }
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
