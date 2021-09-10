@@ -29,7 +29,7 @@ import java.util.concurrent.locks.*;
 import java.nio.*;
 
 class ValueNotification implements BluetoothNotification<byte[]> {
-
+    private static int i = 0;
     public void run(byte[] tempRaw) {
 //             System.out.print("Axes raw = {");
 //             for (byte b : tempRaw) {
@@ -44,7 +44,9 @@ class ValueNotification implements BluetoothNotification<byte[]> {
               value = value - 32768;
               System.out.println("Axes.................... "+ value);
             }
+            i++;
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("Integer Count" + i);
             /*
              * The temperature service returns the data in an encoded format which can be found in the wiki. Convert the
              * raw temperature format to celsius and print it. Conversion for object temperature depends on ambient
