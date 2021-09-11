@@ -251,7 +251,7 @@ public class HelloTinyB {
       put("WAKEUP+", new byte[]{0x03});
     }};
 
-    byte[] modeConfigValue = MODE_CONFIG.get("MANUAl");
+    byte[] modeConfigValue = MODE_CONFIG.get("WAKEUP");
 
     System.out.println("ModeConfigValue " + modeConfigValue);
 
