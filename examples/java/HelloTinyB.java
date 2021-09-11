@@ -244,18 +244,18 @@ public class HelloTinyB {
     System.out.println("Found BluetoothGattCharacteristic " + tempValue.getUUID());
 //     System.out.println("Found BluetoothGattCharacteristic " + batValue.getUUID());
 //     init(tempValue, batValue);
-    Dictionary MODE_CONFIG = new Hashtable(){{
-      put("MANUAl", "{0x01}");
-      put("WAKEUP", "{0x02}");
-      put("WAKEUP+", "{0x03}");
+    
+    Dictionary<String, byte[]> MODE_CONFIG = new Hashtable<String, byte[]>(){{
+      put("MANUAl", new byte[]{0x01});
+      put("WAKEUP", new byte[]{0x02});
+      put("WAKEUP+", new byte[]{0x03});
     }};
 
-    Object modeConfigValue = MODE_CONFIG.get("MANUAl");
+    byte[] modeConfigValue = MODE_CONFIG.get("MANUAl");
 
     System.out.println("ModeConfigValue " + modeConfigValue);
 
-
-    tempValue.writeValue((byte[]) modeConfigValue);
+    tempValue.writeValue(modeConfigValue);
 //         BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
 //         BluetoothGattCharacteristic tempPeriod = getCharacteristic(tempService, "f000aa03-0451-4000-b000-000000000000");
 
