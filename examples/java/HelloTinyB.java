@@ -238,7 +238,7 @@ public class HelloTinyB {
     }
     System.out.println("Found service " + configService.getUUID());
 
-    BluetoothGattCharacteristic calibrationCharacteristic = getCharacteristic(configService, "1c930029-d459-11e7-9296-b8e856369374");
+    BluetoothGattCharacteristic calibrationCharacteristic = getCharacteristic(configService, "1c930024-d459-11e7-9296-b8e856369374");
 //     BluetoothGattCharacteristic batValue = getCharacteristic(tempService, args[3]);
 
     System.out.println("Found BluetoothGattCharacteristic " + calibrationCharacteristic.getUUID());
