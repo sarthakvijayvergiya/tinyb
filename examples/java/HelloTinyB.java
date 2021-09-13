@@ -229,33 +229,40 @@ public class HelloTinyB {
     });
 
 
-    BluetoothGattService tempService = getService(sensor, args[1]);
+    BluetoothGattService configService = getService(sensor, "1c930003-d459-11e7-9296-b8e856369374");
 
-    if (tempService == null) {
+    if (configService == null) {
       System.err.println("This device does not have the temperature service we are looking for.");
       sensor.disconnect();
       System.exit(-1);
     }
-    System.out.println("Found service " + tempService.getUUID());
+    System.out.println("Found service " + configService.getUUID());
 
-    BluetoothGattCharacteristic tempValue = getCharacteristic(tempService, args[2]);
+    BluetoothGattCharacteristic calibrationCharacteristic = getCharacteristic(configService, "1c930029-d459-11e7-9296-b8e856369374");
 //     BluetoothGattCharacteristic batValue = getCharacteristic(tempService, args[3]);
 
-    System.out.println("Found BluetoothGattCharacteristic " + tempValue.getUUID());
+    System.out.println("Found BluetoothGattCharacteristic " + calibrationCharacteristic.getUUID());
 //     System.out.println("Found BluetoothGattCharacteristic " + batValue.getUUID());
 //     init(tempValue, batValue);
-    
-    Dictionary<String, byte[]> MODE_CONFIG = new Hashtable<String, byte[]>(){{
-      put("MANUAl", new byte[]{0x01});
-      put("WAKEUP", new byte[]{0x02});
-      put("WAKEUP+", new byte[]{0x03});
-    }};
 
-    byte[] modeConfigValue = MODE_CONFIG.get("WAKEUP");
+    byte[] calibrationValue = calibrationCharacteristic.readValue();
 
-    System.out.println("ModeConfigValue " + modeConfigValue);
+    double temperature =
+        ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getDouble();
 
-    tempValue.writeValue(modeConfigValue);
+    System.out.println("Temperature" + temperature);
+
+//    Dictionary<String, byte[]> MODE_CONFIG = new Hashtable<String, byte[]>(){{
+//      put("MANUAl", new byte[]{0x01});
+//      put("WAKEUP", new byte[]{0x02});
+//      put("WAKEUP+", new byte[]{0x03});
+//    }};
+//
+//    byte[] modeConfigValue = MODE_CONFIG.get("WAKEUP");
+//
+//    System.out.println("ModeConfigValue " + modeConfigValue);
+//
+//    tempValue.writeValue(modeConfigValue);
 //         BluetoothGattCharacteristic tempConfig = getCharacteristic(tempService, "f000aa02-0451-4000-b000-000000000000");
 //         BluetoothGattCharacteristic tempPeriod = getCharacteristic(tempService, "f000aa03-0451-4000-b000-000000000000");
 
