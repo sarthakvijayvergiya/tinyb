@@ -248,8 +248,11 @@ public class HelloTinyB {
     byte[] calibrationValue = calibrationCharacteristic.readValue();
     
     System.out.println("calibrationValue" + calibrationValue);
-    
-    long temperature = ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getLong();
+    System.out.print("Calib raw = {");
+    for (byte b : calibrationValue) {
+       System.out.print(String.format("%02x,", b));
+     }
+       short temperature = ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getShort();
 //     double temperature =
 //         ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getDouble();
 
