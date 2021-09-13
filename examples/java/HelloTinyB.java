@@ -252,7 +252,7 @@ public class HelloTinyB {
     for (byte b : calibrationValue) {
        System.out.print(String.format("%02x,", b));
      }
-       int temperature = ByteBuffer.wrap(calibrationValue).getInt();
+       short temperature = ByteBuffer.wrap(calibrationValue).getShort();
 //     double temperature =
 //         ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getDouble();
 
