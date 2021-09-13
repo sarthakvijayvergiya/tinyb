@@ -229,7 +229,7 @@ public class HelloTinyB {
     });
 
 
-    BluetoothGattService configService = getService(sensor, "1c930003-d459-11e7-9296-b8e856369374");
+    BluetoothGattService configService = getService(sensor, "1c930002-d459-11e7-9296-b8e856369374");
 
     if (configService == null) {
       System.err.println("This device does not have the temperature service we are looking for.");
