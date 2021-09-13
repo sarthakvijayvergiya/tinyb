@@ -246,7 +246,8 @@ public class HelloTinyB {
 //     init(tempValue, batValue);
 
     byte[] calibrationValue = calibrationCharacteristic.readValue();
-
+    
+    System.out.println("calibrationValue" + calibrationValue);
     double temperature =
         ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getDouble();
 
