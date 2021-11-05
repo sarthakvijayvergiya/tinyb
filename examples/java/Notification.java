@@ -132,7 +132,6 @@ public class Notification {
         }
 
         sensor.enableConnectedNotifications(new ConnectedNotification());
-        sensor.enableManufacturerDataNotifications(new BlueVibAdvertisementNotification());
 
         System.out.print("Found device: ");
         printDevice(sensor);
@@ -143,6 +142,8 @@ public class Notification {
             System.out.println("Could not connect device.");
             System.exit(-1);
         }
+        sensor.enableManufacturerDataNotifications(new BlueVibAdvertisementNotification());
+
 
         /*
          * After we find the device we can stop looking for other devices.
@@ -202,7 +203,7 @@ public class Notification {
 //         byte[] period = { 100 };
 //         tempPeriod.writeValue(period);
 
-        tempValue.enableValueNotifications(new ValueNotification());
+//        tempValue.enableValueNotifications(new ValueNotification());
 
         lock.lock();
         try {
