@@ -195,9 +195,9 @@ public class Notification {
     
         System.out.println("calibrationValue" + calibrationValue);
         System.out.print("Calib raw = {");
-        for (byte b : calibrationValue) {
-            System.out.println(String.format("%02x,", b));
-        }
+        // for (byte b : calibrationValue) {
+        //     System.out.println(String.format("%02x,", b));
+        // }
         short temperature = ByteBuffer.wrap(calibrationValue).getShort();
 //     double temperature =
 //         ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getDouble();
