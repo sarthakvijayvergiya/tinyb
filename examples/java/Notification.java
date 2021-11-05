@@ -216,7 +216,7 @@ public class Notification {
     }
 }
 
-class BlueVibAdvertisementNotification extends BluetoothNotification<Map<Short, byte[]>> {
+class BlueVibAdvertisementNotification implements BluetoothNotification<Map<Short, byte[]>> {
 
     public void run(Map<Short, byte[]> advertisementsMap) {
         System.out.println("BlueVibAdvertisementNotification");
