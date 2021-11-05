@@ -211,7 +211,6 @@ public class HelloTinyB {
       System.out.println("Could not connect device.");
       System.exit(-1);
     }
-    sensor.enableManufacturerDataNotifications(new BlueVibAdvertisementNotification());
     Lock lock = new ReentrantLock();
     Condition cv = lock.newCondition();
 
