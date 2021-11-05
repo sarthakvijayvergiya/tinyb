@@ -214,3 +214,18 @@ public class Notification {
 
     }
 }
+
+public class BlueVibAdvertisementNotification extends BluetoothNotification<Map<Short, byte[]>> {
+
+    public void run(Map<Short, byte[]> advertisementsMap) {
+        System.out.println("BlueVibAdvertisementNotification");
+        if (advertisementsMap.size() > 0) {
+            for (Map.Entry<Short, byte[]> entry : advertisementsMap.entrySet()) {
+                Short key = (Short) entry.getKey();
+                byte [] foobar = (byte[])entry.getValue();
+                System.out.println(key);
+                System.out.println((byte[])entry.getValue());
+            }
+        }
+    }
+}

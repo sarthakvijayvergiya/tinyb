@@ -204,14 +204,14 @@ public class HelloTinyB {
 
     System.out.print("Found device: ");
     printDevice(sensor);
-
+    
     if (sensor.connect())
       System.out.println("Sensor with the provided address connected");
     else {
       System.out.println("Could not connect device.");
       System.exit(-1);
     }
-
+    sensor.enableManufacturerDataNotifications(new BlueVibAdvertisementNotification());
     Lock lock = new ReentrantLock();
     Condition cv = lock.newCondition();
 
