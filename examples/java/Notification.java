@@ -132,6 +132,7 @@ public class Notification {
         }
 
         sensor.enableConnectedNotifications(new ConnectedNotification());
+        sensor.enableManufacturerDataNotifications(new BlueVibAdvertisementNotification());
 
         System.out.print("Found device: ");
         printDevice(sensor);
