@@ -198,11 +198,11 @@ public class Notification {
         // for (byte b : calibrationValue) {
         //     System.out.println(String.format("%02x,", b));
         // }
-        short temperature = ByteBuffer.wrap(calibrationValue).getShort();
+        // short temperature = ByteBuffer.wrap(calibrationValue).getShort();
 //     double temperature =
 //         ByteBuffer.wrap(calibrationValue).order(ByteOrder.LITTLE_ENDIAN).getDouble();
 
-        System.out.println("Temperature" + temperature);
+        // System.out.println("Temperature" + temperature);
         /*
          * Turn on the Temperature Service by writing 1 in the configuration characteristic, as mentioned in the PDF
          * mentioned above. We could also modify the update interval, by writing in the period characteristic, but the
