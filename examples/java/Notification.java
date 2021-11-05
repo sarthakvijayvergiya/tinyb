@@ -142,7 +142,7 @@ public class Notification {
             System.out.println("Could not connect device.");
             System.exit(-1);
         }
-        sensor.enableManufacturerDataNotifications(new BlueVibAdvertisementNotification());
+        sensor.enableServiceDataNotifications(new BlueVibAdvertisementNotification());
 
 
         /*
@@ -228,17 +228,17 @@ public class Notification {
     }
 }
 
-class BlueVibAdvertisementNotification implements BluetoothNotification<Map<Short, byte[]>> {
+class BlueVibAdvertisementNotification implements BluetoothNotification<Map<String, byte[]>> {
 
-    public void run(Map<Short, byte[]> advertisementsMap) {
+    public void run(Map<String, byte[]> advertisementsMap) {
         System.out.println("BlueVibAdvertisementNotification");
-        if (advertisementsMap.size() > 0) {
-            for (Map.Entry<Short, byte[]> entry : advertisementsMap.entrySet()) {
-                Short key = (Short) entry.getKey();
-                byte [] foobar = (byte[])entry.getValue();
-                System.out.println(key);
-                System.out.println((byte[])entry.getValue());
-            }
-        }
+//        if (advertisementsMap.size() > 0) {
+//            for (Map.Entry<String, byte[]> entry : advertisementsMap.entrySet()) {
+//                String key = (String) entry.getKey();
+//                byte [] foobar = (byte[])entry.getValue();
+//                System.out.println(key);
+//                System.out.println((byte[])entry.getValue());
+//            }
+//        }
     }
 }
