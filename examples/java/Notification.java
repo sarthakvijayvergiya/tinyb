@@ -142,8 +142,33 @@ public class Notification {
             System.out.println("Could not connect device.");
             System.exit(-1);
         }
-        sensor.enableServiceDataNotifications(new BlueVibAdvertisementNotification());
+        // sensor.enableServiceDataNotifications(new BlueVibAdvertisementNotification());
 
+        System.out.println("GetManaufactureData")
+        Map<Short, byte[]> manufactureMap = sensor.getManufacturerData()
+        System.out.println("GetManaufactureData- Executed")
+        System.out.println(manufactureMap.size())
+        if (manufactureMap.size() > 0) {
+           for (Map.Entry<Short, byte[]> entry : manufactureMap.entrySet()) {
+               String key = (String) entry.getKey();
+               byte [] foobar = (byte[])entry.getValue();
+               System.out.println(key);
+               System.out.println((byte[])entry.getValue());
+           }
+        }
+        
+        System.out.println("GetServiceData")
+        Map<String, byte[]> advertisementsMap = sensor.getServiceData()
+        System.out.println("GetServiceData- Executed")
+        System.out.println(advertisementsMap.size())
+        if (advertisementsMap.size() > 0) {
+           for (Map.Entry<String, byte[]> entry : advertisementsMap.entrySet()) {
+               String key = (String) entry.getKey();
+               byte [] foobar = (byte[])entry.getValue();
+               System.out.println(key);
+               System.out.println((byte[])entry.getValue());
+           }
+        }
 
         /*
          * After we find the device we can stop looking for other devices.
