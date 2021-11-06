@@ -144,10 +144,10 @@ public class Notification {
         }
         // sensor.enableServiceDataNotifications(new BlueVibAdvertisementNotification());
 
-        System.out.println("GetManaufactureData")
-        Map<Short, byte[]> manufactureMap = sensor.getManufacturerData()
-        System.out.println("GetManaufactureData- Executed")
-        System.out.println(manufactureMap.size())
+        System.out.println("GetManaufactureData");
+        Map<Short, byte[]> manufactureMap = sensor.getManufacturerData();
+        System.out.println("GetManaufactureData- Executed");
+        System.out.println(manufactureMap.size());
         if (manufactureMap.size() > 0) {
            for (Map.Entry<Short, byte[]> entry : manufactureMap.entrySet()) {
                String key = (String) entry.getKey();
@@ -156,11 +156,11 @@ public class Notification {
                System.out.println((byte[])entry.getValue());
            }
         }
-        
-        System.out.println("GetServiceData")
-        Map<String, byte[]> advertisementsMap = sensor.getServiceData()
-        System.out.println("GetServiceData- Executed")
-        System.out.println(advertisementsMap.size())
+
+        System.out.println("GetServiceData");
+        Map<String, byte[]> advertisementsMap = sensor.getServiceData();
+        System.out.println("GetServiceData- Executed");
+        System.out.println(advertisementsMap.size());
         if (advertisementsMap.size() > 0) {
            for (Map.Entry<String, byte[]> entry : advertisementsMap.entrySet()) {
                String key = (String) entry.getKey();
