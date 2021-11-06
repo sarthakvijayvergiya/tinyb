@@ -150,7 +150,7 @@ public class Notification {
         System.out.println(manufactureMap.size());
         if (manufactureMap.size() > 0) {
            for (Map.Entry<Short, byte[]> entry : manufactureMap.entrySet()) {
-               String key = (String) entry.getKey();
+               Short key = (Short) entry.getKey();
                byte [] foobar = (byte[])entry.getValue();
                System.out.println(key);
                System.out.println((byte[])entry.getValue());
